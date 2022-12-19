@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Trevoir.DTOS;
 using Trevoir.IRespository;
@@ -15,9 +14,9 @@ namespace Trevoir.Controllers
         private readonly IMapper mapper;
         public CountryController(IUnitOfWork unitOfWork, ILogger<CountryController> logger, IMapper mapper)
         {
-           this. unitOfWork = unitOfWork;
-           this. logger = logger;
-           this.mapper = mapper;
+            this.unitOfWork = unitOfWork;
+            this.logger = logger;
+            this.mapper = mapper;
         }
         [HttpGet]
         public async Task<IActionResult> GetAll()
@@ -26,7 +25,7 @@ namespace Trevoir.Controllers
             {
                 var countries = await unitOfWork.Country.GetALL();
                 var result = mapper.Map<IList<CountryDTO>>(countries);
-                return  Ok(result);
+                return Ok(result);
             }
             catch (Exception ex)
             {
@@ -34,6 +33,22 @@ namespace Trevoir.Controllers
                 return StatusCode(500, ex.Message);
             }
 
+        }
+
+        [HttpGet("{id:int}")]
+        public async Task<IActionResult> GetCountry(int id)
+        {
+            try
+            {
+                var country = await unitOfWork.Country.Get(c => c.Id == id, new List<string> { "Hotels" });
+                var result = mapper.Map<CountryDTO>(country);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex.Message);
+                return StatusCode(500, "Internal Server Error Try again");
+            }
         }
     }
 }

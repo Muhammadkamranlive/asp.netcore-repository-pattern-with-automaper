@@ -5,6 +5,7 @@ namespace Trevoir.IRespository
     public interface IGenericRepository<T> where T : class
     {
         Task<IList<T>> GetALL(
+
                 Expression<Func<T, bool>> expression = null,
                 Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
                 List<string> Includes = null

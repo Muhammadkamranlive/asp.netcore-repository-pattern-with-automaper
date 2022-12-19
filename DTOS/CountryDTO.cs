@@ -12,6 +12,7 @@ namespace Trevoir.DTOS
     public class CountryDTO : CreateCountryDTO
     {
         public int Id { get; set; }
+        public IList<HotelDTOS> Hotels { get; set; }
 
     }
 

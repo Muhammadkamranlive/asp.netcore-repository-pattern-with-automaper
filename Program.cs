@@ -1,5 +1,8 @@
 using Microsoft.EntityFrameworkCore;
+using Trevoir.Configurations;
 using Trevoir.Data;
+using Trevoir.IRespository;
+using Trevoir.Respository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,8 +18,11 @@ builder.Services.AddCors(o =>
 });
 
 
+builder.Services.AddAutoMapper(typeof(MapperInitilizer));
 builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("sqlConnection")));
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddControllers().AddNewtonsoftJson(op=>op.SerializerSettings.ReferenceLoopHandling=Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

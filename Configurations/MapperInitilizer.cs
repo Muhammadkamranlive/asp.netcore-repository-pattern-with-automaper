@@ -8,11 +8,11 @@ namespace Trevoir.Configurations
     {
         public MapperInitilizer()
         {
-            
             CreateMap<Country, CountryDTO>().ReverseMap();
             CreateMap<Country, CreateCountryDTO>().ReverseMap();
             CreateMap<Hotels, HotelDTOS>().ReverseMap();
-            CreateMap<HotelDTOS, CreateHotelDTO>().ReverseMap();
+            CreateMap<Hotels, CreateHotelDTO>().ReverseMap();
+            CreateMap<ApiUser, UserDTOS>().ReverseMap();
         }
     }
 }

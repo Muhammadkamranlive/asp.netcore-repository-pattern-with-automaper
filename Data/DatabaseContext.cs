@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Trevoir.Configurations.Entities;
 
 namespace Trevoir.Data
 {
@@ -16,16 +17,9 @@ namespace Trevoir.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            builder.Entity<Country>().HasData(
-                     new Country() { Id = 1, Name = "PAK" },
-                     new Country() { Id = 2, Name = "IND" },
-                     new Country() { Id = 3, Name = "USA" }
-                );
-            builder.Entity<Hotels>().HasData(
-                    new Hotels() { Id = 1, Name = "West", CountryId = 1 },
-                    new Hotels() { Id = 2, Name = "World", CountryId = 2 },
-                    new Hotels() { Id = 3, Name = "USA", CountryId = 3 }
-               );
+            builder.ApplyConfiguration(new UserRole());
+            builder.ApplyConfiguration(new CountryConfiguration());
+            builder.ApplyConfiguration(new HotelConfiguration());
         }
     }
 }

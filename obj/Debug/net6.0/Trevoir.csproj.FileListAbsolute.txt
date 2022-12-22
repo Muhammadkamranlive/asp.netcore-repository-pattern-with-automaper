@@ -354,3 +354,4 @@ E:\C#\Trevoir\New folder\asp.netcore-repository-pattern-with-automaper\obj\Debug
 E:\C#\Trevoir\New folder\asp.netcore-repository-pattern-with-automaper\obj\Debug\net6.0\Trevoir.pdb
 E:\C#\Trevoir\New folder\asp.netcore-repository-pattern-with-automaper\obj\Debug\net6.0\Trevoir.genruntimeconfig.cache
 E:\C#\Trevoir\New folder\asp.netcore-repository-pattern-with-automaper\obj\Debug\net6.0\ref\Trevoir.dll
+D:\C#\Traveroir\asp.netcore-repository-pattern-with-automaper\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

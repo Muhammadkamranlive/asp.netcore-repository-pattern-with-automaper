@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Trevoir.Data;
@@ -14,7 +13,7 @@ namespace Trevoir.Controllers
         private readonly UserManager<ApiUser> userManager;
         private readonly IMapper mapper;
         private readonly ILogger<AccountController> logger;
-        public AccountController(UserManager<ApiUser> userManager, ILogger<AccountController> logger,IMapper mapper )
+        public AccountController(UserManager<ApiUser> userManager, ILogger<AccountController> logger, IMapper mapper)
         {
             this.userManager = userManager;
             //this.signInManager = signInManager;
@@ -23,10 +22,14 @@ namespace Trevoir.Controllers
         }
 
         [HttpPost]
-        [Route("Register")]
-        public async Task<IActionResult> Register([FromBody] UserDTOS userDTOS)
+        [Route("register")]
+        [ProducesResponseType(StatusCodes.Status202Accepted)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> Register([FromBody] UserDTOS userDTO)
 
         {
+            logger.LogInformation($"Registration Attempt for {userDTO.Email} ");
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -34,22 +37,24 @@ namespace Trevoir.Controllers
 
             try
             {
-                var user = mapper.Map<ApiUser>(userDTOS);
-                user.UserName = userDTOS.Email;
-                var result = await userManager.CreateAsync(user,userDTOS.Password);
+                var user = mapper.Map<ApiUser>(userDTO);
+                user.UserName = userDTO.Email;
+                var result = await userManager.CreateAsync(user, userDTO.Password);
                 if (!result.Succeeded)
                 {
-                    foreach (var error in result.Errors)    
+                    foreach (var error in result.Errors)
                     {
                         ModelState.AddModelError(error.Code, error.Description);
                     }
                     return BadRequest(ModelState);
                 }
-                await userManager.AddToRolesAsync(user, userDTOS.Roles);
+                await userManager.AddToRolesAsync(user, userDTO.Roles);
                 return Accepted();
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
-                return StatusCode(500, ex.Message);
+                logger.LogError(ex, $"Something Went Wrong in the {nameof(Register)}");
+                return Problem($"Something Went Wrong in the {nameof(Register)}", statusCode: 500);
             }
         }
 
@@ -77,11 +82,11 @@ namespace Trevoir.Controllers
         //    {
         //        return StatusCode(500, ex.Message);
         //    }
-        
-       
-    //}
 
-       
-    
+
+        //}
+
+
+
     }
 }

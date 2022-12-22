@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\C#\\Trevoir\\New folder\\asp.netcore-repository-pattern-with-automaper\\Trevoir.csproj": {}
+    "D:\\C#\\Traveroir\\asp.netcore-repository-pattern-with-automaper\\Trevoir.csproj": {}
   },
   "projects": {
-    "E:\\C#\\Trevoir\\New folder\\asp.netcore-repository-pattern-with-automaper\\Trevoir.csproj": {
+    "D:\\C#\\Traveroir\\asp.netcore-repository-pattern-with-automaper\\Trevoir.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\C#\\Trevoir\\New folder\\asp.netcore-repository-pattern-with-automaper\\Trevoir.csproj",
+        "projectUniqueName": "D:\\C#\\Traveroir\\asp.netcore-repository-pattern-with-automaper\\Trevoir.csproj",
         "projectName": "Trevoir",
-        "projectPath": "E:\\C#\\Trevoir\\New folder\\asp.netcore-repository-pattern-with-automaper\\Trevoir.csproj",
-        "packagesPath": "C:\\Users\\dell\\.nuget\\packages\\",
-        "outputPath": "E:\\C#\\Trevoir\\New folder\\asp.netcore-repository-pattern-with-automaper\\obj\\",
+        "projectPath": "D:\\C#\\Traveroir\\asp.netcore-repository-pattern-with-automaper\\Trevoir.csproj",
+        "packagesPath": "C:\\Users\\kamrdmuh\\.nuget\\packages\\",
+        "outputPath": "D:\\C#\\Traveroir\\asp.netcore-repository-pattern-with-automaper\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "D:\\sdk .net\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\kamrdmuh\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,7 +22,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -48,6 +43,10 @@
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
               "version": "[12.0.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[6.0.11, )"
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",

@@ -12,8 +12,8 @@ using Trevoir.Data;
 namespace Trevoir.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20221220181142_added-roles")]
-    partial class addedroles
+    [Migration("20221222091905_InitialModel")]
+    partial class InitialModel
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -54,15 +54,15 @@ namespace Trevoir.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2cabce8c-0e3a-4032-b858-47837cfe24c6",
-                            ConcurrencyStamp = "cd8e77e0-1f00-4582-81c7-a19984950124",
+                            Id = "fd1f9877-4377-4b1c-ac5a-a2e47fadc5b6",
+                            ConcurrencyStamp = "509b37f6-0998-4bfe-8030-d79be8ce1418",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "7bf1a4fa-3719-44fd-8ede-bcc2909c8e40",
-                            ConcurrencyStamp = "c266b9d3-e887-4abf-9d56-6915aeab8026",
+                            Id = "a44dc67a-3cec-4578-9005-7e24fd6925f6",
+                            ConcurrencyStamp = "0dabe0b4-2be0-42fe-8dcf-6ccf04e54bc1",
                             Name = "Admin",
                             NormalizedName = "ADMINISTRATOR"
                         });
